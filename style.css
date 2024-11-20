@@ -1,0 +1,82 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(to left,black,red 1%,black 99%);
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+#gameArea {
+    position: relative;
+    width: 800px;
+    height: 150px;
+    background-image: url(https://preview.redd.it/6qc5nn9sed491.gif?format=png8&s=fff63414e9267e8e69b7d17409281b4f466dd481);
+    overflow: hidden;
+    border: 2px solid black;
+}
+
+#dino {
+    position: absolute;
+    bottom: 0;
+    left: 60px;
+    width: 50px;
+    height: 40px;
+    background-image: url(https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/dbf60404-68fd-4bba-9453-05714f9ca8ca/dhad249-752c7bcd-405c-4d60-8570-a81726e01a1e.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2RiZjYwNDA0LTY4ZmQtNGJiYS05NDUzLTA1NzE0ZjljYThjYVwvZGhhZDI0OS03NTJjN2JjZC00MDVjLTRkNjAtODU3MC1hODE3MjZlMDFhMWUucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.9UhTLP_3i390Sn4GDdOMFYuH3Wlx-rew-tydAgcdqtk);
+    background-size: cover;
+    border-radius: 5px;
+}
+
+#ground {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 10px;
+
+}
+
+.obstacle {
+    position: absolute;
+    bottom: 0;
+    width: 40px;
+    height: 50px;
+    background-image: url(https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/d1bb3601-c876-4469-a6d0-9706c0b009e7/dg88psl-116ce6ed-0356-40c9-ab2b-087f154c644d.png/v1/fill/w_1280,h_1280/trollge_final_phase_png_free_to_use_by_fkdkdjjdjdjdjdjdej_dg88psl-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTI4MCIsInBhdGgiOiJcL2ZcL2QxYmIzNjAxLWM4NzYtNDQ2OS1hNmQwLTk3MDZjMGIwMDllN1wvZGc4OHBzbC0xMTZjZTZlZC0wMzU2LTQwYzktYWIyYi0wODdmMTU0YzY0NGQucG5nIiwid2lkdGgiOiI8PTEyODAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.KThk2AnqnN5ePKIa5SGgqgI79-eSbX88XN2bJG6Vabw);
+    background-size: cover;
+    animation: moveObstacle 2s linear infinite;
+}
+
+@keyframes moveObstacle {
+    0% { left: 100%; }
+    100% { left: -20px; }
+}
+
+#gameOverScreen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(https://static.wikia.nocookie.net/interminable-rooms-fan-ideas/images/8/84/M_Trollge.png/revision/latest?cb=20230613215245);
+    background-size: 100% 100%;
+    color: rgb(255, 255, 255);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#gameOverScreen h1 {
+    font-size: 48px;
+}
+
+#gameOverScreen p {
+    font-size: 24px;
+}
