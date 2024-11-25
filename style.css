@@ -80,3 +80,10 @@ body {
 #gameOverScreen p {
     font-size: 24px;
 }
+#victoryScreen {
+    display: none; /* Inicialmente escondido */
+    text-align: center;
+    font-size: 30px;
+    color: green;
+    background-size: cover;
+}

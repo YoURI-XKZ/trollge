@@ -3,13 +3,15 @@ const gameArea = document.getElementById('gameArea');
 const ground = document.getElementById('ground');
 const gameOverScreen = document.getElementById('gameOverScreen'); // Tela de Game Over
 const gameOverSound = document.getElementById('gameOverSound'); // Som de Game Over
-
+const themeSong = document.getElementById ('theme')
 let isJumping = false;
 let gravity = 0.9;
 let dinoBottom = 0;
 let isGameOver = false;
+let obstacleInterval;
+let obstacles = [];
 
-// Controlando o pulo
+
 document.addEventListener('keydown', (event) => {
     if (event.code === 'Space' && !isJumping && !isGameOver) {
         jump();
@@ -44,7 +46,7 @@ function fall() {
     }, 20);
 }
 
-// Criando obstáculos
+
 function createObstacle() {
     const obstacle = document.createElement('div');
     obstacle.classList.add('obstacle');
@@ -79,9 +81,21 @@ function isCollision(obstacle) {
     );
 }
 
+//*musica
+function tocarMusica() {
+    setTimeout(() => {
+        themeSong.play();
+
+    },1000);
+}
+
 function gameOver() {
     isGameOver = true;
     gameOverScreen.style.display = 'flex'; // Exibe a tela de Game Over
+
+    function stopMusica(){
+        themeSong.pause()
+    }
 
     // Tocar o som de Game Over
     gameOverSound.play();
@@ -95,3 +109,11 @@ setInterval(() => {
         createObstacle();
     }
 }, 2000);
+
+
+document.addEventListener('keydown', function(event) {
+    if (event.code === 'KeyR') {  // Verifica se a tecla pressionada é 'R'
+        location.reload();  // Recarrega a página
+    }
+});
+
