@@ -87,3 +87,25 @@ body {
     color: green;
     background-size: cover;
 }
+
+/* Estilos para o botão de reinício */
+#restartButton {
+    background-color: #ff0000; /* Cor de fundo verde */
+    color: rgb(255, 255, 255); /* Cor do texto */
+    font-size: 18px; /* Tamanho da fonte */
+    padding: 10px 20px; /* Padding ao redor do texto */
+    border: none; /* Remover borda */
+    border-radius: 5px; /* Bordas arredondadas */
+    cursor: pointer; /* Cursor de mão para indicar que é clicável */
+    transition: background-color 0.3s; /* Transição suave para a cor de fundo */
+}
+
+/* Estilo ao passar o mouse sobre o botão */
+#restartButton:hover {
+    background-color: #000000; /* Cor de fundo mais escura ao passar o mouse */
+}
+
+/* Estilo ao clicar no botão */
+#restartButton:active {
+    background-color: #ff0000; /* Cor de fundo ainda mais escura ao clicar */
+}

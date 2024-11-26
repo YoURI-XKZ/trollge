@@ -3,7 +3,9 @@ const gameArea = document.getElementById('gameArea');
 const ground = document.getElementById('ground');
 const gameOverScreen = document.getElementById('gameOverScreen'); // Tela de Game Over
 const gameOverSound = document.getElementById('gameOverSound'); // Som de Game Over
-const themeSong = document.getElementById ('theme')
+const themeSong = document.getElementById('theme'); // Música de fundo
+const restartButton = document.getElementById('restartButton'); // Botão de reinício
+
 let isJumping = false;
 let gravity = 0.9;
 let dinoBottom = 0;
@@ -11,13 +13,17 @@ let isGameOver = false;
 let obstacleInterval;
 let obstacles = [];
 
-
+// Começar o jogo e tocar a música
 document.addEventListener('keydown', (event) => {
     if (event.code === 'Space' && !isJumping && !isGameOver) {
+        if (themeSong.paused) {
+            themeSong.play(); // Toca a música quando o jogo começa
+        }
         jump();
     }
 });
 
+// Função para pular
 function jump() {
     isJumping = true;
     let jumpHeight = 0;
@@ -34,6 +40,7 @@ function jump() {
     }, 20);
 }
 
+// Função para cair
 function fall() {
     const fallInterval = setInterval(() => {
         if (dinoBottom > 0) {
@@ -46,7 +53,7 @@ function fall() {
     }, 20);
 }
 
-
+// Função para criar obstáculos
 function createObstacle() {
     const obstacle = document.createElement('div');
     obstacle.classList.add('obstacle');
@@ -68,7 +75,7 @@ function createObstacle() {
     }, 20);
 }
 
-// Verificando colisões
+// Função para verificar colisão
 function isCollision(obstacle) {
     const dinoRect = dino.getBoundingClientRect();
     const obstacleRect = obstacle.getBoundingClientRect();
@@ -81,21 +88,12 @@ function isCollision(obstacle) {
     );
 }
 
-//*musica
-function tocarMusica() {
-    setTimeout(() => {
-        themeSong.play();
-
-    },1000);
-}
-
+// Função de Game Over
 function gameOver() {
     isGameOver = true;
     gameOverScreen.style.display = 'flex'; // Exibe a tela de Game Over
-
-    function stopMusica(){
-        themeSong.pause()
-    }
+    themeSong.pause(); // Pausa a música de fundo
+    themeSong.currentTime = 0; // Reseta a música para o início
 
     // Tocar o som de Game Over
     gameOverSound.play();
@@ -110,10 +108,26 @@ setInterval(() => {
     }
 }, 2000);
 
+// Reiniciar o jogo quando o botão for clicado
+restartButton.addEventListener('click', () => {
+    location.reload(); // Recarrega a página para reiniciar o jogo
+});
 
-document.addEventListener('keydown', function(event) {
-    if (event.code === 'KeyR') {  // Verifica se a tecla pressionada é 'R'
-        location.reload();  // Recarrega a página
+// Tecla 'R' para reiniciar o jogo
+document.addEventListener('keydown', function (event) {
+    if (event.code === 'KeyR') { // Verifica se a tecla pressionada é 'R'
+        location.reload(); // Recarrega a página
     }
 });
 
+
+
+
+// Evitar o redirecionamento se o jogo estiver em Game Over
+setTimeout(function () {
+if (!isGameOver) {
+    window.open("lore/final.html","_self"); 
+} else {
+    console.log(".");
+}
+}, 15000);
